@@ -1,3 +1,4 @@
+import javax.swing.border.TitledBorder;
 import java.util.Scanner;
 
 public class Main {
@@ -5,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Library library = new Library(10);
+        Library library = new Library();
 
         int choice;
 
@@ -27,10 +28,31 @@ public class Main {
 
                 case 1:
                     // TODO: Read input and add Book
+                    System.out.print("input Title = ");
+                    String Title = scanner.nextLine();
+                    System.out.print("input Author = ");
+                    String Author = scanner.nextLine();
+                    System.out.print("input Year = ");
+                    int Year = scanner.nextInt();
+                    scanner.nextLine();
+                    library.addBook(new Book(Title,Author,Year));
+                    System.out.println("book added");
                     break;
 
                 case 2:
                     // TODO: Read input and add EBook
+                    System.out.print("input Title = ");
+                    String eTitle = scanner.nextLine();
+                    System.out.print("input Author = ");
+                    String eAuthor = scanner.nextLine();
+                    System.out.print("input Year = ");
+                    int eYear = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("input filesize = ");
+                    double filesize = scanner.nextDouble();
+                    scanner.nextLine();
+                    library.addBook(new EBook(eTitle,eAuthor,eYear,filesize));
+                    System.out.println("ebook added");
                     break;
 
                 case 3:
@@ -39,14 +61,27 @@ public class Main {
 
                 case 4:
                     // TODO: Search book
+                    System.out.print("search_for_title: ");
+                    String targ = scanner.nextLine();
+                    Book found = library.searchByTitle(targ);
+                    if (found!=null){
+                        System.out.print("found the book:");
+                        System.out.println(found.toString());
+                    }
                     break;
 
                 case 5:
                     // TODO: Borrow book
+                    System.out.print("which title you want to borrow ");
+                    String bt = scanner.nextLine();
+                    library.borrowBook(bt);
                     break;
 
                 case 6:
                     // TODO: Return book
+                    System.out.print("which title you want to return ");
+                    String rt = scanner.nextLine();
+                    library.returnBook(rt);
                     break;
 
                 case 7:

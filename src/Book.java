@@ -1,6 +1,5 @@
 public class Book {
 
-    // TODO: make fields private
     private String title;
     private String author;
     private int year;
@@ -8,50 +7,48 @@ public class Book {
 
     // TODO: Implement parameterized constructor
     public Book(String title, String author, int year) {
-        // implement
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.isAvailable = true;
     }
 
     // TODO: Implement copy constructor
     public Book(Book other) {
-        // implement
+        this.title = other.title;
+        this.author = other.author;
+        this.year =other.year;
+        this.isAvailable = other.isAvailable;
     }
 
     // TODO: Implement getters
-    public String getTitle() {
-        return null;
-    }
+    public String getTitle() {return this.title;}
 
-    public String getAuthor() {
-        return null;
-    }
+    public String getAuthor() {return this.author;}
 
-    public int getYear() {
-        return 0;
-    }
+    public int getYear() {return this.year;}
 
-    public boolean isAvailable() {
-        return false;
-    }
+    public boolean isAvailable() {return this.isAvailable;}
 
     // TODO: Implement borrow logic
-    public void borrowBook() {
-        // implement
-    }
+    public void borrowBook() {this.isAvailable = false;}
 
     // TODO: Implement return logic
-    public void returnBook() {
-        // implement
-    }
+    public void returnBook() {this.isAvailable = true;}
 
     // TODO: Override toString()
     @Override
-    public String toString() {
-        return "";
-    }
+    public String toString(){return "Title : "+this.title+" , Author: "+this.author+" ,  Year: "+this.year+" , Available: "+this.isAvailable;}
 
     // TODO: Override equals()
     @Override
     public boolean equals(Object obj) {
-        return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (!(obj instanceof Book)) return false;
+        Book other = (Book) obj;
+        if (this.year == other.year && this.title.equals(other.title) && this.author.equals(other.author)){
+            return true;
+        }return false;
     }
 }
